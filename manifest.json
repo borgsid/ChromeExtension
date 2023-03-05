@@ -1,6 +1,6 @@
 {
-  "name": "GPT-3 Writer",
-  "description": "Write a blog post in the style of your favorite thinker anywhere!",
+  "name": "Your personal event planner",
+  "description": "Your personal assistan that will help you navigate through the events of fuori salone.",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
@@ -11,6 +11,17 @@
   },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Generate blog post"
-  }
+    "default_title": "Fuorisalone Assistant"
+  },
+  "background":{
+    "service_worker": "scripts/contextMenuServiceWorker.js"
+  },
+  "host_permissions": ["https://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/content.js"]
+    }
+  ],
+  "permissions": ["contextMenus", "tabs", "storage"]
 }
